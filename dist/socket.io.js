@@ -309,7 +309,7 @@ var io = ('undefined' === typeof module ? {} : module.exports);
     }
 
     util.load(function () {
-      setTimeout(fn, 100);
+      setTimeout(fn, 500);
     });
   };
 
@@ -1853,7 +1853,6 @@ var io = ('undefined' === typeof module ? {} : module.exports);
       , this.options.host + ':' + this.options.port
       , this.options.resource
       , io.protocol
-      , ''
       , this.sessionid
     ].join('/') + '/?disconnect=1';
 
@@ -3608,7 +3607,6 @@ var swfobject=function(){var D="undefined",r="object",S="Shockwave Flash",W="Sho
   , 'undefined' != typeof io ? io : module.parent.exports
   , this
 );
-
 /**
  * socket.io
  * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
@@ -3723,10 +3721,11 @@ var swfobject=function(){var D="undefined",r="object",S="Shockwave Flash",W="Sho
 
       try {
         // ie6 dynamic iframes with target="" support (thanks Chris Lambacher)
-        iframe = document.createElement('<iframe name="'+ self.iframeId +'">');
+        iframe = document.createElement('<iframe src="javascript:0" name="'+ self.iframeId +'">');
       } catch (e) {
         iframe = document.createElement('iframe');
         iframe.name = self.iframeId;
+        iframe.src = "javascript:0";
       }
 
       iframe.id = self.iframeId;
@@ -3791,6 +3790,7 @@ var swfobject=function(){var D="undefined",r="object",S="Shockwave Flash",W="Sho
     if (indicator) {
       setTimeout(function () {
         var iframe = document.createElement('iframe');
+        iframe.src = "javascript:0";
         document.body.appendChild(iframe);
         document.body.removeChild(iframe);
       }, 100);
@@ -3865,7 +3865,4 @@ var swfobject=function(){var D="undefined",r="object",S="Shockwave Flash",W="Sho
   , this
 );
 
-if (typeof define === "function" && define.amd) {
-  define([], function () { return io; });
-}
 })();
