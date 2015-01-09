@@ -1,6 +1,6 @@
 /*! Socket.IO.js build:0.9.16, development. Copyright(c) 2011 LearnBoost <dev@learnboost.com> MIT Licensed */
 
-var io = ('undefined' === typeof module ? {} : module.exports);
+var io = ('undefined' === typeof module || 'undefined' === typeof module.exports ? {} : module.exports);
 (function() {
 
 /**
@@ -104,8 +104,7 @@ var io = ('undefined' === typeof module ? {} : module.exports);
     return socket.of(uri.path.length > 1 ? uri.path : '');
   };
 
-})('object' === typeof module ? module.exports : (this.io = {}), this);
-/**
+})('object' === typeof module && 'object' === typeof module.exports ? module.exports : (this.io = {}), this);/**
  * socket.io
  * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
  * MIT Licensed
